@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refugio - Adopciones</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>🐾 Encontrá a tu compañero</h1>
+  </header>
+
+  <section class="filtros">
+  <select id="filtro-especie">
+    <option value="">Todas las especies</option>
+  </select>
+
+  <select id="filtro-edad">
+    <option value="">Todas las edades</option>
+    <option value="cachorro">Cachorro</option>
+    <option value="joven">Joven</option>
+    <option value="adulto">Adulto</option>
+  </select>
+
+  <select id="filtro-sexo">
+    <option value="">Todos los sexos</option>
+    <option value="macho">Macho</option>
+    <option value="hembra">Hembra</option>
+  </select>
+
+  <select id="filtro-tamano">
+    <option value="">Todos los tamaños</option>
+    <option value="chico">Chico</option>
+    <option value="mediano">Mediano</option>
+    <option value="grande">Grande</option>
+  </select>
+</section>
+
+  <main class="catalogo" id="catalogo">
+    <!-- Las tarjetas se generan acá con JS -->
+  </main>
+
+  <script type="module" src="js/catalog.js"></script>
+</body>
+</html>

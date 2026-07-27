@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --verde-pino: #2C4A3E;
+  --arena: #F5EFE6;
+  --ambar: #E8A33D;
+  --tinta: #26241F;
+  --blanco: #FFFFFF;
+  --gris-suave: #8A8577;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: var(--arena);
+  color: var(--tinta);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+}
+
+/* --- HEADER --- */
+header {
+  background-color: var(--verde-pino);
+  color: var(--arena);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+header .subtitulo {
+  font-family: 'Work Sans', sans-serif;
+  color: var(--ambar);
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+/* --- FILTROS --- */
+.filtros {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  background-color: var(--blanco);
+  border-bottom: 1px solid rgba(38, 36, 31, 0.08);
+}
+
+.filtros select {
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(44, 74, 62, 0.2);
+  background-color: var(--arena);
+  color: var(--tinta);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filtros select:hover,
+.filtros select:focus {
+  border-color: var(--ambar);
+  outline: none;
+}
+
+/* --- CATÁLOGO --- */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.75rem;
+  padding: 2.5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tarjeta {
+  background: var(--blanco);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(38, 36, 31, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(38, 36, 31, 0.14);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.tarjeta-info {
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+
+.tarjeta-info h3 {
+  font-size: 1.2rem;
+  color: var(--verde-pino);
+  margin-bottom: 0.6rem;
+}
+
+.badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.78rem;
+  font-family: 'Work Sans', sans-serif;
+  background-color: var(--arena);
+  color: var(--verde-pino);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.badge::before {
+  content: '🐾';
+  margin-right: 0.3rem;
+  font-size: 0.7rem;
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--gris-suave);
+  grid-column: 1 / -1;
+  font-size: 1.05rem;
+}
+
+/* --- DETALLE --- */
+.detalle {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+}
+
+.detalle-tarjeta {
+  background: var(--blanco);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(38, 36, 31, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.detalle-tarjeta img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 340px;
+}
+
+.detalle-info {
+  padding: 2.2rem;
+}
+
+.detalle-info h2 {
+  font-size: 2rem;
+  color: var(--verde-pino);
+  margin-bottom: 1rem;
+}
+
+.detalle-info p {
+  margin-bottom: 0.6rem;
+  font-size: 0.98rem;
+}
+
+.detalle-info p strong {
+  color: var(--verde-pino);
+  font-weight: 600;
+}
+
+.descripcion {
+  margin: 1rem 0 1.5rem;
+  color: var(--tinta);
+  line-height: 1.7;
+}
+
+.btn-instagram {
+  display: inline-block;
+  background-color: var(--ambar);
+  color: var(--tinta);
+  text-decoration: none;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-instagram:hover {
+  background-color: #d6922e;
+  transform: translateY(-2px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 700px) {
+  .detalle-tarjeta {
+    grid-template-columns: 1fr;
+  }
+
+  .detalle-tarjeta img {
+    min-height: 260px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* --- ACCESIBILIDAD --- */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ambar);
+  outline-offset: 2px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Formulario</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+
+  <header>
+    <h1 id="titulo-form">Agregar nuevo animal</h1>
+  </header>
+
+  <main class="admin-main">
+    <form id="form-animal">
+      <label>Nombre</label>
+      <input type="text" id="nombre" required>
+
+      <label>Especie</label>
+      <select id="especie" required></select>
+
+      <label>Edad</label>
+      <select id="edad" required>
+        <option value="cachorro">Cachorro</option>
+        <option value="joven">Joven</option>
+        <option value="adulto">Adulto</option>
+      </select>
+
+      <label>Sexo</label>
+      <select id="sexo" required>
+        <option value="macho">Macho</option>
+        <option value="hembra">Hembra</option>
+      </select>
+
+      <label>Tamaño</label>
+      <select id="tamano" required>
+        <option value="chico">Chico</option>
+        <option value="mediano">Mediano</option>
+        <option value="grande">Grande</option>
+      </select>
+
+      <label>Descripción</label>
+      <textarea id="descripcion" rows="4"></textarea>
+
+      <label>Foto</label>
+      <input type="file" id="foto" accept="image/*">
+      <img id="preview-foto" class="foto-preview" style="display:none;">
+
+      <button type="submit">Guardar</button>
+      <a href="dashboard.html" class="btn-cancelar">Cancelar</a>
+      <p id="form-error-msg" class="error-msg"></p>
+    </form>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

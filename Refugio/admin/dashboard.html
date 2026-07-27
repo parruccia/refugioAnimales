@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Panel</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+
+  <header>
+    <h1>Panel de administración</h1>
+    <button id="btn-logout">Cerrar sesión</button>
+  </header>
+
+  <main class="admin-main">
+    <a href="form.html" class="btn-agregar">+ Agregar nuevo animal</a>
+
+    <table id="tabla-animales">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpo-tabla">
+        <!-- Se llena con JS -->
+      </tbody>
+    </table>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
