@@ -1,0 +1,30 @@
+<!-- admin/ajustes.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajustes - Colitas Chochas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header>
+    <h1>Ajustes de color</h1>
+  </header>
+
+  <main>
+    <form id="formAjustes">
+      <label for="colorHeader">Color del header</label>
+      <input type="color" id="colorHeader" name="colorHeader">
+
+      <label for="colorBody">Color de fondo</label>
+      <input type="color" id="colorBody" name="colorBody">
+
+      <button type="submit">Guardar cambios</button>
+    </form>
+    <p id="mensajeEstado"></p>
+  </main>
+
+  <script type="module" src="ajustes.js"></script>
+</body>
+</html>
