@@ -314,7 +314,6 @@ td a:hover {
     padding: 1.5rem;
   }
 
-  /* La tabla se convierte en tarjetas apiladas */
   table, thead, tbody, tr {
     display: block;
     width: 100%;
@@ -334,63 +333,58 @@ td a:hover {
     border-radius: 14px;
     box-shadow: 0 2px 10px rgba(38, 36, 31, 0.08);
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 0.8rem;
     width: 100%;
     box-sizing: border-box;
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0 0.9rem;
   }
 
   td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.4rem;
     border-bottom: none;
-    padding: 0.5rem 0;
-    width: 100%;
+    padding: 0.15rem 0;
     box-sizing: border-box;
-    text-align: right;
-  }
-
-  td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: var(--verde-pino);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    text-align: left;
   }
 
   td:first-child {
-    justify-content: center;
-    padding-bottom: 0.8rem;
+    flex: 0 0 90px;
+    padding: 0;
   }
 
-  td:first-child::before {
-    content: none;
+  .foto-mini {
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  td[data-label="Nombre"],
+  td[data-label="Especie"],
+  td[data-label="Estado"] {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  td[data-label="Nombre"] {
+    font-weight: 700;
+    color: var(--verde-pino);
+    font-size: 1.05rem;
   }
 
   td[data-label="Acciones"] {
-    flex-direction: column;
-    align-items: stretch;
+    flex-basis: 100%;
+    display: flex;
     gap: 0.5rem;
-  }
-
-  td[data-label="Acciones"]::before {
-    margin-bottom: 0.3rem;
+    margin-top: 0.6rem;
   }
 
   td[data-label="Acciones"] a,
   td[data-label="Acciones"] button {
-    width: 100%;
+    flex: 1;
     text-align: center;
     margin-right: 0;
-  }
-
-  .foto-mini {
-    width: 70px;
-    height: 70px;
   }
 }
 

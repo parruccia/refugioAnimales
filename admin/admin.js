@@ -61,9 +61,9 @@ function renderizarTabla(animales) {
     const fila = document.createElement('tr');
     fila.innerHTML = `
       <td><img src="${animal.foto_url || '../img/placeholder.png'}" class="foto-mini"></td>
-      <td>${animal.nombre}</td>
-      <td>${animal.especie}</td>
-      <td>${animal.estado}</td>
+      <td data-label="Nombre">Nombre: ${animal.nombre}</td>
+      <td data-label="Especie">Especie: ${animal.especie}</td>
+      <td data-label="Estado">Estado: ${animal.estado}</td>
       <td>
         <a href="form.html?id=${animal.id}">Editar</a>
         ${animal.estado === 'disponible'
