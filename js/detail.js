@@ -1,5 +1,4 @@
 import { supabase } from './supabaseClient.js';
-import { CONFIG } from './config.js';
 
 const contenedor = document.getElementById('detalle');
 
@@ -25,13 +24,40 @@ async function cargarAnimal() {
     }
 
     renderizarAnimal(data);
+    renderizarContacto();
 }
 
-function obtenerLinkContacto() {
-    if (CONFIG.contacto.tipo === 'whatsapp') {
-        return `https://wa.me/${CONFIG.contacto.whatsappNumero}`;
+async function obtenerDatosContacto() {
+    const { data, error } = await supabase
+        .from('configuracion')
+        .select('instagram_user, whatsapp_numero')
+        .eq('id', 1)
+        .single();
+
+    if (error || !data) {
+        console.error('No se pudieron cargar los datos de contacto.');
+        return { instagram: null, whatsapp: null };
     }
-    return `https://instagram.com/${CONFIG.contacto.instagramUser}`;
+
+    return {
+        instagram: data.instagram_user ? `https://instagram.com/${data.instagram_user}` : null,
+        whatsapp: data.whatsapp_numero ? `https://wa.me/${data.whatsapp_numero}` : null,
+    };
+}
+
+async function renderizarContacto() {
+    const { instagram, whatsapp } = await obtenerDatosContacto();
+    const contenedorContacto = document.getElementById('contacto');
+    if (!contenedorContacto) return;
+
+    contenedorContacto.innerHTML = '';
+
+    if (instagram) {
+        contenedorContacto.innerHTML += `<a href="${instagram}" target="_blank" class="btn-instagram">📷 Instagram</a>`;
+    }
+    if (whatsapp) {
+        contenedorContacto.innerHTML += `<a href="${whatsapp}" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>`;
+    }
 }
 
 function renderizarAnimal(animal) {
@@ -47,9 +73,7 @@ function renderizarAnimal(animal) {
         <span class="badge">${animal.tamano}</span>
         </div>
         <p class="descripcion">${animal.descripcion || ''}</p>
-        <a href="${obtenerLinkContacto()}" target="_blank" class="btn-instagram">
-          📷 Contactar
-        </a>
+        <div id="contacto"></div>
       </div>
     </div>
   `;

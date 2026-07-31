@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="/css/styles.css">
 
 </head>
-<body>
+<body data-admin>
 
   <header>
-    <h1>Panel de administración</h1>
+  <h1>Panel de administración</h1>
+  <div class="acciones-header">
+    <a href="ajustes.html" class="btn-secundario">Ajustes de color</a>
     <button id="btn-logout">Cerrar sesión</button>
-  </header>
+  </div>
+</header>
 
   <main class="admin-main">
     <a href="form.html" class="btn-agregar">+ Agregar nuevo animal</a>
@@ -37,5 +40,5 @@
 
   <script type="module" src="admin.js"></script>
   <script type="module" src="js/aplicarTema.js"></script>
-</body>
+</body data-admin>
 </html>
