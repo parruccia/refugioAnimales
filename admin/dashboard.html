@@ -12,7 +12,6 @@
 <header>
   <h1>Panel de administración</h1>
   <div class="acciones-header">
-    <a href="ajustes.html" class="btn-secundario">Ajustes de refugio</a>
     <button id="btn-logout">Cerrar sesión</button>
   </div>
 </header>
@@ -20,11 +19,41 @@
 <main class="admin-main">
   <a href="form.html" class="btn-agregar">+ Agregar nuevo animal</a>
 
+  <section class="admin-filtros" aria-label="Filtrar animales">
+    <input type="search" id="admin-buscar" placeholder="Buscar por nombre...">
+    <select id="admin-filtro-especie">
+      <option value="">Especies</option>
+    </select>
+    <select id="admin-filtro-edad">
+      <option value="">Edades</option>
+      <option value="cachorro">Cachorro</option>
+      <option value="joven">Joven</option>
+      <option value="adulto">Adulto</option>
+    </select>
+    <select id="admin-filtro-sexo">
+      <option value="">Sexos</option>
+      <option value="macho">Macho</option>
+      <option value="hembra">Hembra</option>
+    </select>
+    <select id="admin-filtro-tamano">
+      <option value="">Tamaños</option>
+      <option value="chico">Chico</option>
+      <option value="mediano">Mediano</option>
+      <option value="grande">Grande</option>
+    </select>
+    <select id="admin-filtro-estado">
+      <option value="">Estados</option>
+      <option value="disponible">Disponible</option>
+      <option value="adoptado">Adoptado</option>
+    </select>
+  </section>
+
     <table id="tabla-animales">
       <thead>
         <tr>
           <th>Foto</th>
           <th>Nombre</th>
+          <th>Código</th>
           <th>Especie</th>
           <th>Estado</th>
           <th>Acciones</th>

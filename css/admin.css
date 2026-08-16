@@ -1,19 +1,23 @@
-/* admin.css - depende de las variables definidas en styles.css */
+/* admin.css - panel de administración (estética acorde al landing: rosa/naranja) */
 
 /* --- LOGIN --- */
 .login-container {
-  max-width: 380px;
+  max-width: 400px;
   margin: 6rem auto;
   background: var(--blanco);
-  padding: 2.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(38, 36, 31, 0.1);
+  padding: 2.6rem 2.2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(43, 43, 43, 0.08);
+  box-shadow: 0 18px 45px rgba(43, 43, 43, 0.07);
   text-align: center;
 }
 
 .login-container h1 {
-  color: var(--verde-pino);
-  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
   margin-bottom: 1.5rem;
 }
 
@@ -24,33 +28,36 @@
 }
 
 .login-container input {
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  border: 1.5px solid rgba(44, 74, 62, 0.2);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(43, 43, 43, 0.18);
   font-family: 'Work Sans', sans-serif;
   font-size: 0.95rem;
+  transition: border-color 0.2s ease;
 }
 
 .login-container input:focus {
   outline: none;
-  border-color: var(--ambar);
+  border-color: var(--rosa);
 }
 
 .login-container button {
-  background-color: var(--verde-pino);
-  color: var(--arena);
+  background-color: var(--rosa);
+  color: var(--blanco);
   border: none;
   padding: 0.85rem;
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
   font-family: 'Work Sans', sans-serif;
+  box-shadow: 0 8px 20px rgba(233, 30, 140, 0.25);
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .login-container button:hover {
-  background-color: #23392f;
+  background-color: var(--rosa-hover);
+  transform: translateY(-1px);
 }
 
 .error-msg {
@@ -59,7 +66,7 @@
   min-height: 1.2rem;
 }
 
-/* --- HEADER ADMIN (extiende el header general) --- */
+/* --- HEADER ADMIN --- */
 header {
   display: flex;
   justify-content: space-between;
@@ -69,40 +76,25 @@ header {
 
 header #btn-logout {
   background: transparent;
-  border: 1.5px solid var(--arena);
-  color: var(--arena);
+  border: 1.5px solid var(--rosa);
+  color: var(--rosa);
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
   font-size: 0.85rem;
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 header #btn-logout:hover {
-  background-color: rgba(245, 239, 230, 0.15);
+  background-color: var(--rosa);
+  color: var(--blanco);
 }
 
 header .acciones-header {
   display: flex;
   gap: 0.6rem;
-}
-
-.btn-secundario {
-  display: inline-block;
-  background: transparent;
-  border: 1.5px solid var(--arena);
-  color: var(--arena);
-  padding: 0.5rem 1.1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 0.85rem;
-  transition: background-color 0.2s ease;
-}
-
-.btn-secundario:hover {
-  background-color: rgba(245, 239, 230, 0.15);
 }
 
 /* --- ADMIN MAIN / DASHBOARD --- */
@@ -112,50 +104,88 @@ header .acciones-header {
   padding: 0 2rem 3rem;
 }
 
+/* --- FILTROS DEL DASHBOARD --- */
+.admin-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-filtros input[type="search"],
+.admin-filtros select {
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(233, 30, 140, 0.25);
+  background-color: var(--blanco);
+  color: var(--tinta);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-filtros input[type="search"] {
+  flex: 1;
+  min-width: 180px;
+  cursor: text;
+}
+
+.admin-filtros input[type="search"]:focus,
+.admin-filtros select:focus {
+  outline: none;
+  border-color: var(--rosa);
+  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.1);
+}
+
 .btn-agregar {
   display: inline-block;
-  background-color: var(--ambar);
-  color: var(--tinta);
+  background-color: var(--rosa);
+  color: var(--blanco);
   text-decoration: none;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.9rem;
+  font-family: 'Work Sans', sans-serif;
   margin-bottom: 1.5rem;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 8px 20px rgba(233, 30, 140, 0.25);
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .btn-agregar:hover {
-  background-color: #d6922e;
+  background-color: var(--rosa-hover);
+  transform: translateY(-1px);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background: var(--blanco);
-  border-radius: 14px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(38, 36, 31, 0.08);
+  border: 1px solid rgba(43, 43, 43, 0.08);
+  box-shadow: 0 8px 24px rgba(43, 43, 43, 0.05);
 }
 
 thead {
-  background-color: var(--verde-pino);
+  background-color: var(--rosa);
 }
 
 th {
-  color: var(--arena);
+  color: var(--blanco);
   text-align: left;
   padding: 0.9rem 1rem;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 
 td {
   padding: 0.8rem 1rem;
-  border-bottom: 1px solid rgba(38, 36, 31, 0.07);
+  border-bottom: 1px solid rgba(43, 43, 43, 0.07);
   font-size: 0.92rem;
   vertical-align: middle;
 }
@@ -165,18 +195,18 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-  background-color: rgba(232, 163, 61, 0.06);
+  background-color: rgba(233, 30, 140, 0.04);
 }
 
 .foto-mini {
   width: 48px;
   height: 48px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 td a {
-  color: var(--verde-pino);
+  color: var(--rosa);
   font-weight: 600;
   text-decoration: none;
   margin-right: 0.7rem;
@@ -186,7 +216,6 @@ td a:hover {
   text-decoration: underline;
 }
 
-.btn-adoptado,
 .btn-eliminar {
   border: none;
   padding: 0.4rem 0.85rem;
@@ -196,21 +225,9 @@ td a:hover {
   cursor: pointer;
   margin-right: 0.5rem;
   font-family: 'Work Sans', sans-serif;
-}
-
-.btn-adoptado {
-  background-color: rgba(44, 74, 62, 0.1);
-  color: var(--verde-pino);
-}
-
-.btn-adoptado:hover {
-  background-color: var(--verde-pino);
-  color: var(--arena);
-}
-
-.btn-eliminar {
   background-color: rgba(179, 67, 47, 0.1);
   color: #b3432f;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-eliminar:hover {
@@ -218,54 +235,89 @@ td a:hover {
   color: var(--blanco);
 }
 
+.select-estado {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(233, 30, 140, 0.25);
+  background-color: var(--blanco);
+  color: var(--tinta);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.select-estado:focus {
+  outline: none;
+  border-color: var(--rosa);
+  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.1);
+}
+
+.celda-codigo {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--tinta);
+}
+
+td.sin-resultados {
+  text-align: center;
+  color: var(--gris-suave);
+  padding: 2.2rem 1rem;
+}
+
 /* --- FORMULARIO --- */
 #form-animal {
   background: var(--blanco);
   max-width: 560px;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(38, 36, 31, 0.08);
+  padding: 2.2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(43, 43, 43, 0.08);
+  box-shadow: 0 8px 24px rgba(43, 43, 43, 0.05);
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
 #form-animal label {
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  color: var(--verde-pino);
-  font-size: 0.88rem;
+  color: var(--tinta);
+  font-size: 0.85rem;
   margin-top: 0.7rem;
 }
 
 #form-animal input,
 #form-animal select,
 #form-animal textarea {
-  padding: 0.7rem 0.9rem;
-  border-radius: 10px;
-  border: 1.5px solid rgba(44, 74, 62, 0.2);
+  padding: 0.75rem 0.95rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(43, 43, 43, 0.18);
   font-family: 'Work Sans', sans-serif;
   font-size: 0.92rem;
   resize: vertical;
+  transition: border-color 0.2s ease;
 }
 
 #form-animal input:focus,
 #form-animal select:focus,
 #form-animal textarea:focus {
   outline: none;
-  border-color: var(--ambar);
+  border-color: var(--rosa);
 }
 
 .foto-preview {
   width: 140px;
   height: 140px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 14px;
   margin-top: 0.6rem;
 }
 
 #form-animal button[type="submit"] {
-  background-color: var(--verde-pino);
-  color: var(--arena);
+  background-color: var(--rosa);
+  color: var(--blanco);
   border: none;
   padding: 0.85rem;
   border-radius: 999px;
@@ -274,10 +326,13 @@ td a:hover {
   cursor: pointer;
   margin-top: 1.3rem;
   font-family: 'Work Sans', sans-serif;
+  box-shadow: 0 8px 20px rgba(233, 30, 140, 0.25);
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 #form-animal button[type="submit"]:hover {
-  background-color: #23392f;
+  background-color: var(--rosa-hover);
+  transform: translateY(-1px);
 }
 
 .btn-cancelar {
@@ -292,79 +347,6 @@ td a:hover {
   text-decoration: underline;
 }
 
-/* --- AJUSTES --- */
-#form-ajustes {
-  background: var(--blanco);
-  max-width: 560px;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(38, 36, 31, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-#form-ajustes label {
-  font-weight: 600;
-  color: var(--verde-pino);
-  font-size: 0.88rem;
-  margin-top: 0.7rem;
-}
-
-#form-ajustes input[type="text"] {
-  padding: 0.7rem 0.9rem;
-  border-radius: 10px;
-  border: 1.5px solid rgba(44, 74, 62, 0.2);
-  font-family: 'Work Sans', sans-serif;
-  font-size: 0.92rem;
-}
-
-#form-ajustes input[type="text"]:focus {
-  outline: none;
-  border-color: var(--ambar);
-}
-
-#form-ajustes input[type="color"] {
-  width: 60px;
-  height: 40px;
-  padding: 0;
-  border: 1.5px solid rgba(44, 74, 62, 0.2);
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-#logo-actual {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-top: 0.6rem;
-}
-
-#form-ajustes button[type="submit"] {
-  background-color: var(--verde-pino);
-  color: var(--arena);
-  border: none;
-  padding: 0.85rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  margin-top: 1.3rem;
-  font-family: 'Work Sans', sans-serif;
-}
-
-#form-ajustes button[type="submit"]:hover {
-  background-color: #23392f;
-}
-
-#mensaje-estado {
-  text-align: center;
-  font-size: 0.88rem;
-  color: var(--verde-pino);
-  margin-top: 0.8rem;
-}
-
 /* --- RESPONSIVE --- */
 @media (max-width: 700px) {
   .login-container {
@@ -375,6 +357,10 @@ td a:hover {
   header {
     flex-direction: column;
     gap: 0.8rem;
+    text-align: center;
+  }
+
+  body[data-admin] header h1 {
     text-align: center;
   }
 
@@ -402,68 +388,86 @@ td a:hover {
   table {
     box-shadow: none;
     background: transparent;
+    border: none;
   }
 
-tbody tr {
-  background: var(--blanco);
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(38, 36, 31, 0.08);
-  margin-bottom: 1rem;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  display: block !important;
-}
+  tbody tr {
+    background: var(--blanco);
+    border-radius: 18px;
+    border: 1px solid rgba(43, 43, 43, 0.08);
+    box-shadow: 0 8px 24px rgba(43, 43, 43, 0.05);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    display: block !important;
+  }
 
-td {
-  border-bottom: none;
-  padding: 0;
-  box-sizing: border-box;
-}
+  td {
+    border-bottom: none;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-td:first-child {
-  margin-bottom: 0.8rem;
-}
+  td:first-child {
+    margin-bottom: 0.8rem;
+  }
 
-.foto-mini {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
-}
+  .foto-mini {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+  }
 
-td[data-label="Nombre"] {
-  font-weight: 700;
-  color: var(--verde-pino);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
+  td[data-label="Nombre"] {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--tinta);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
 
-td[data-label="Especie"],
-td[data-label="Estado"] {
-  display: inline-block;
-  background-color: rgba(44, 74, 62, 0.08);
-  color: var(--verde-pino);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  margin-right: 0.4rem;
-  margin-bottom: 0.5rem;
-}
+  td[data-label="Especie"],
+  td[data-label="Código"] {
+    display: inline-block;
+    background-color: rgba(233, 30, 140, 0.1);
+    color: var(--rosa);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
 
-td[data-label="Acciones"] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.4rem;
-}
+  td[data-label="Estado"] {
+    display: block;
+    background: transparent;
+    color: var(--tinta);
+    padding: 0;
+    margin: 0 0 0.5rem;
+    border-radius: 0;
+  }
 
-td[data-label="Acciones"] a,
-td[data-label="Acciones"] button {
-  flex: 1;
-  min-width: 90px;
-  text-align: center;
-  margin-right: 0;
-}
+  td[data-label="Estado"] .select-estado {
+    width: 100%;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  td[data-label="Acciones"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+
+  td[data-label="Acciones"] a,
+  td[data-label="Acciones"] button {
+    flex: 1;
+    min-width: 90px;
+    text-align: center;
+    margin-right: 0;
+  }
 }

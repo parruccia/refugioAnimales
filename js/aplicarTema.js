@@ -1,7 +1,19 @@
 // js/aplicarTema.js
 import { supabase } from './supabaseClient.js';
+import { CONFIG } from './config.js';
 
 const esAdmin = document.body.hasAttribute('data-admin');
+
+const NOMBRE_DEFAULT_DB = 'Mi Refugio';
+const INSTAGRAM_LEGACY = 'nachoparruccia';
+
+function nombreRefugioValido(nombre) {
+  return Boolean(nombre) && nombre !== NOMBRE_DEFAULT_DB;
+}
+
+function instagramValido(usuario) {
+  return Boolean(usuario) && usuario !== INSTAGRAM_LEGACY;
+}
 
 function aplicarValores(data) {
   if (!esAdmin) {
@@ -11,7 +23,7 @@ function aplicarValores(data) {
   }
 
   document.querySelectorAll('[data-nombre-refugio]').forEach(el => {
-    el.textContent = data.nombre_refugio;
+    el.textContent = nombreRefugioValido(data.nombre_refugio) ? data.nombre_refugio : CONFIG.nombreRefugio;
   });
 
   document.querySelectorAll('[data-logo-refugio]').forEach(el => {
@@ -23,8 +35,9 @@ function aplicarValores(data) {
 
   const linkInstagram = document.querySelector('[data-instagram-header]');
   if (linkInstagram) {
-    if (data.instagram_user) {
-      linkInstagram.href = `https://instagram.com/${data.instagram_user}`;
+    const usuario = instagramValido(data.instagram_user) ? data.instagram_user : CONFIG.contacto.instagramUser;
+    if (usuario) {
+      linkInstagram.href = `https://www.instagram.com/${usuario}/`;
       linkInstagram.style.display = 'inline-block';
     } else {
       linkInstagram.style.display = 'none';
@@ -41,8 +54,9 @@ function aplicarValores(data) {
     }
   }
 
-  if (data.nombre_refugio) {
-    document.title = `${data.nombre_refugio} - ${document.title}`;
+  const nombre = nombreRefugioValido(data.nombre_refugio) ? data.nombre_refugio : CONFIG.nombreRefugio;
+  if (nombre) {
+    document.title = `${nombre} - ${document.title}`;
   }
 }
 
@@ -59,7 +73,7 @@ async function aplicarTema() {
     .single();
 
   if (error || !data) {
-    console.error('No se pudieron cargar los ajustes desde Supabase.');
+    console.error('No se pudieron cargar los datos del refugio desde Supabase.');
     return;
   }
 

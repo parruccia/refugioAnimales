@@ -1,5 +1,6 @@
 import { supabase } from '../js/supabaseClient.js';
 import { CONFIG } from '../js/config.js';
+import { generarCodigo } from '../js/codigo.js';
 
 const formLogin = document.getElementById('form-login');
 const errorMsg = document.getElementById('error-msg');
@@ -7,6 +8,15 @@ const cuerpoTabla = document.getElementById('cuerpo-tabla');
 const btnLogout = document.getElementById('btn-logout');
 const formAnimal = document.getElementById('form-animal');
 const selectEspecie = document.getElementById('especie');
+
+const adminBuscar = document.getElementById('admin-buscar');
+const adminFiltroEspecie = document.getElementById('admin-filtro-especie');
+const adminFiltroEdad = document.getElementById('admin-filtro-edad');
+const adminFiltroSexo = document.getElementById('admin-filtro-sexo');
+const adminFiltroTamano = document.getElementById('admin-filtro-tamano');
+const adminFiltroEstado = document.getElementById('admin-filtro-estado');
+
+let todosLosAnimales = [];
 
 // --- LOGIN ---
 if (formLogin) {
@@ -30,7 +40,17 @@ if (formLogin) {
 // --- DASHBOARD ---
 if (cuerpoTabla) {
   verificarSesion();
+  cargarOpcionesFiltroEspecie();
   cargarAnimales();
+
+  if (adminBuscar) {
+    adminBuscar.addEventListener('input', aplicarFiltros);
+    adminFiltroEspecie.addEventListener('change', aplicarFiltros);
+    adminFiltroEdad.addEventListener('change', aplicarFiltros);
+    adminFiltroSexo.addEventListener('change', aplicarFiltros);
+    adminFiltroTamano.addEventListener('change', aplicarFiltros);
+    adminFiltroEstado.addEventListener('change', aplicarFiltros);
+  }
 }
 
 async function verificarSesion() {
@@ -51,24 +71,67 @@ async function cargarAnimales() {
     return;
   }
 
-  renderizarTabla(data);
+  todosLosAnimales = data;
+  aplicarFiltros();
+}
+
+function cargarOpcionesFiltroEspecie() {
+  if (!adminFiltroEspecie) return;
+  CONFIG.especies.forEach(especie => {
+    const option = document.createElement('option');
+    option.value = especie;
+    option.textContent = especie.charAt(0).toUpperCase() + especie.slice(1);
+    adminFiltroEspecie.appendChild(option);
+  });
+}
+
+function aplicarFiltros() {
+  const texto = (adminBuscar.value || '').toLowerCase().trim();
+  const especie = adminFiltroEspecie.value;
+  const edad = adminFiltroEdad.value;
+  const sexo = adminFiltroSexo.value;
+  const tamano = adminFiltroTamano.value;
+  const estado = adminFiltroEstado.value;
+
+  const filtrados = todosLosAnimales.filter(animal => {
+    const codigo = generarCodigo(animal).toLowerCase();
+    const coincideTexto = !texto ||
+      (animal.nombre || '').toLowerCase().includes(texto) ||
+      codigo.includes(texto);
+    return coincideTexto &&
+      (!especie || animal.especie === especie) &&
+      (!edad || animal.edad === edad) &&
+      (!sexo || animal.sexo === sexo) &&
+      (!tamano || animal.tamano === tamano) &&
+      (!estado || animal.estado === estado);
+  });
+
+  renderizarTabla(filtrados);
 }
 
 function renderizarTabla(animales) {
   cuerpoTabla.innerHTML = '';
 
+  if (animales.length === 0) {
+    cuerpoTabla.innerHTML = '<tr><td colspan="6" class="sin-resultados">No hay animales que coincidan con la búsqueda.</td></tr>';
+    return;
+  }
+
   animales.forEach(animal => {
     const fila = document.createElement('tr');
     fila.innerHTML = `
       <td><img src="${animal.foto_url || '../img/placeholder.png'}" class="foto-mini"></td>
-      <td data-label="Nombre">Nombre: ${animal.nombre}</td>
-      <td data-label="Especie">Especie: ${animal.especie}</td>
-      <td data-label="Estado">Estado: ${animal.estado}</td>
+      <td data-label="Nombre">${animal.nombre}</td>
+      <td data-label="Código" class="celda-codigo">${generarCodigo(animal)}</td>
+      <td data-label="Especie">${animal.especie}</td>
+      <td data-label="Estado">
+        <select class="select-estado" data-id="${animal.id}">
+          <option value="disponible" ${animal.estado === 'disponible' ? 'selected' : ''}>Disponible</option>
+          <option value="adoptado" ${animal.estado === 'adoptado' ? 'selected' : ''}>Adoptado</option>
+        </select>
+      </td>
       <td>
         <a href="form.html?id=${animal.id}">Editar</a>
-        ${animal.estado === 'disponible'
-          ? `<button class="btn-adoptado" data-id="${animal.id}">Marcar adoptado</button>`
-          : ''}
         <button class="btn-eliminar" data-id="${animal.id}">Eliminar</button>
       </td>
     `;
@@ -79,17 +142,16 @@ function renderizarTabla(animales) {
 }
 
 function agregarListenersBotones() {
-  document.querySelectorAll('.btn-adoptado').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const id = btn.dataset.id;
+  document.querySelectorAll('.select-estado').forEach(select => {
+    select.addEventListener('change', async () => {
+      const id = select.dataset.id;
       const { error } = await supabase
         .from('animals')
-        .update({ estado: 'adoptado' })
+        .update({ estado: select.value })
         .eq('id', id);
 
       if (error) {
-        alert('Error al marcar como adoptado.');
-        return;
+        alert('Error al actualizar el estado.');
       }
       cargarAnimales();
     });
