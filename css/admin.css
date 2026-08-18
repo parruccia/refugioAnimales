@@ -66,6 +66,34 @@
   min-height: 1.2rem;
 }
 
+.exito-msg {
+  color: #2C7A3E;
+  font-size: 0.85rem;
+  min-height: 1.2rem;
+}
+
+.login-texto {
+  color: var(--gris-suave);
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.login-link {
+  display: block;
+  margin-top: 1.2rem;
+  color: var(--rosa);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: var(--rosa-hover);
+  text-decoration: underline;
+}
+
 /* --- HEADER ADMIN --- */
 header {
   display: flex;
@@ -95,6 +123,7 @@ header #btn-logout:hover {
 header .acciones-header {
   display: flex;
   gap: 0.6rem;
+  align-items: center;
 }
 
 /* --- ADMIN MAIN / DASHBOARD --- */
@@ -271,6 +300,7 @@ td.sin-resultados {
 #form-animal {
   background: var(--blanco);
   max-width: 560px;
+  margin: 0 auto;
   padding: 2.2rem;
   border-radius: 24px;
   border: 1px solid rgba(43, 43, 43, 0.08);
@@ -348,6 +378,16 @@ td.sin-resultados {
 }
 
 /* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .admin-main {
+    padding: 0 1.5rem 2.5rem;
+  }
+
+  .admin-filtros {
+    gap: 0.5rem;
+  }
+}
+
 @media (max-width: 700px) {
   .login-container {
     margin: 3rem 1.2rem;
@@ -362,10 +402,22 @@ td.sin-resultados {
 
   body[data-admin] header h1 {
     text-align: center;
+    font-size: 1.1rem;
   }
 
   .admin-main {
     padding: 0 1rem 2rem;
+  }
+
+  .admin-filtros {
+    flex-direction: column;
+  }
+
+  .admin-filtros input[type="search"],
+  .admin-filtros select {
+    width: 100%;
+    min-width: 0;
+    flex: none;
   }
 
   #form-animal {

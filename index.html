@@ -3,7 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Refugio - Adopciones</title>
+  <title>Colitas Chochas – Refugio de animales</title>
+  <meta name="description" content="Refugio de animales Colitas Chochas. Rescatamos, cuidamos y buscamos hogar para perros y gatos en adopción responsable.">
+  <meta name="theme-color" content="#E91E8C">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Colitas Chochas – Refugio de animales">
+  <meta property="og:description" content="Rescatamos, cuidamos y buscamos hogar para perros y gatos en adopción responsable.">
+  <meta property="og:image" content="img/hero-perros.jpg">
+  <meta property="og:url" content="">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Colitas Chochas",
+    "description": "Refugio de animales. Rescatamos, cuidamos y buscamos hogar para perros y gatos en adopción responsable.",
+    "url": "",
+    "image": "img/hero-perros.jpg",
+    "areaServed": "Argentina",
+    "knowsLanguage": "es",
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Adopción responsable de animales"
+      }
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -21,6 +54,9 @@
             <span class="hero-nombre" data-nombre-refugio>Colitas Chochas</span>
           </div>
 
+          <button class="hero-burger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
           <nav class="hero-nav" aria-label="Navegación principal">
             <a href="#" class="activo">Inicio</a>
             <a href="#sobre-nosotros">Sobre Nosotros</a>
@@ -47,69 +83,6 @@
         </div>
 
         <div class="hero-watermark" aria-hidden="true">Rescatamos</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== CATÁLOGO CON FILTROS ===== -->
-  <section class="catalogo-intro">
-    <h2 class="catalogo-titulo">Conocé a tu nueva mascota</h2>
-  </section>
-
-  <section class="filtros" aria-label="Filtrar animales">
-    <select id="filtro-especie">
-      <option value="">Todas las especies</option>
-    </select>
-
-    <select id="filtro-edad">
-      <option value="">Todas las edades</option>
-      <option value="cachorro">Cachorro</option>
-      <option value="joven">Joven</option>
-      <option value="adulto">Adulto</option>
-    </select>
-
-    <select id="filtro-sexo">
-      <option value="">Todos los sexos</option>
-      <option value="macho">Macho</option>
-      <option value="hembra">Hembra</option>
-    </select>
-
-    <select id="filtro-tamano">
-      <option value="">Todos los tamaños</option>
-      <option value="chico">Chico</option>
-      <option value="mediano">Mediano</option>
-      <option value="grande">Grande</option>
-    </select>
-  </section>
-
-  <main class="catalogo" id="catalogo">
-    <!-- Las tarjetas se generan acá con JS -->
-  </main>
-
-  <!-- ===== SOBRE NOSOTROS ===== -->
-  <section class="sobre-nosotros" id="sobre-nosotros">
-    <div class="sobre-nosotros-contenedor">
-
-      <div class="sobre-nosotros-texto">
-        <span class="sobre-nosotros-etiqueta">Sobre Nosotros</span>
-        <h2 class="sobre-nosotros-titulo">Trabajamos para que <span class="resaltado">ninguna colita</span> esté sola</h2>
-        <div class="hero-separador" aria-hidden="true"></div>
-        <p class="sobre-nosotros-parrafo">
-          Grupo de voluntarios comprometidos a ayudar a los callejeritos, brindándoles refugio, alimento, cuidados y mucho amor.
-        </p>
-        <ul class="sobre-nosotros-lista">
-          <li>Rescatamos y rehabilitamos</li>
-          <li>Cuidamos su salud y bienestar</li>
-          <li>Adoptamos de forma responsable</li>
-        </ul>
-        <a href="#contacto" class="btn-hero">Quiero colaborar</a>
-      </div>
-
-      <div class="sobre-nosotros-tarjeta">
-        <div class="sobre-nosotros-tarjeta-icono" aria-hidden="true">🐾</div>
-        <h3>Nuestra misión</h3>
-        <p>Que ninguna colita vuelva a dormir a la intemperie. Cada adopción es una vida que cambia para siempre, la de ellos y la de ustedes.</p>
       </div>
 
     </div>
@@ -168,6 +141,174 @@
     </div>
   </section>
 
+  <!-- ===== CATÁLOGO CON FILTROS ===== -->
+  <section class="catalogo-intro">
+    <h2 class="catalogo-titulo">Conocé a tu nueva mascota</h2>
+  </section>
+
+  <section class="filtros" aria-label="Filtrar animales">
+    <select id="filtro-especie">
+      <option value="">Todas las especies</option>
+    </select>
+
+    <select id="filtro-edad">
+      <option value="">Todas las edades</option>
+      <option value="cachorro">Cachorro</option>
+      <option value="joven">Joven</option>
+      <option value="adulto">Adulto</option>
+    </select>
+
+    <select id="filtro-sexo">
+      <option value="">Todos los sexos</option>
+      <option value="macho">Macho</option>
+      <option value="hembra">Hembra</option>
+    </select>
+
+    <select id="filtro-tamano">
+      <option value="">Todos los tamaños</option>
+      <option value="chico">Chico</option>
+      <option value="mediano">Mediano</option>
+      <option value="grande">Grande</option>
+    </select>
+  </section>
+
+  <main class="catalogo" id="catalogo">
+    <!-- Las tarjetas se generan acá con JS -->
+  </main>
+
+  <!-- ===== SOBRE NOSOTROS ===== -->
+  <section class="sobre-nosotros" id="sobre-nosotros">
+    <div class="sobre-nosotros-contenedor">
+
+      <div class="sobre-nosotros-texto">
+        <span class="sobre-nosotros-etiqueta">Sobre Nosotros</span>
+        <h2 class="sobre-nosotros-titulo">Trabajamos para que <span class="resaltado">ninguna colita</span> esté sola</h2>
+        <div class="hero-separador" aria-hidden="true"></div>
+        <p class="sobre-nosotros-parrafo">
+          Grupo de voluntarios comprometidos a ayudar a los callejeritos, brindándoles refugio, alimento, cuidados y mucho amor.
+        </p>
+        <ul class="sobre-nosotros-lista">
+          <li>Rescatamos y rehabilitamos</li>
+          <li>Cuidamos su salud y bienestar</li>
+          <li>Adoptamos de forma responsable</li>
+        </ul>
+        <button type="button" class="btn-hero" id="btn-colaborar">Quiero colaborar</button>
+      </div>
+
+      <div class="sobre-nosotros-tarjeta">
+        <div class="sobre-nosotros-tarjeta-icono" aria-hidden="true">🐾</div>
+        <h3>Nuestra misión</h3>
+        <p>Que ninguna colita vuelva a dormir a la intemperie. Cada adopción es una vida que cambia para siempre, la de ellos y la de ustedes.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MODAL COLABORAR ===== -->
+  <div class="modal-overlay" id="modal-colaborar" aria-hidden="true" role="dialog" aria-label="Datos para colaborar">
+    <div class="modal-contenido">
+      <button type="button" class="modal-cerrar" aria-label="Cerrar">&times;</button>
+      <div class="modal-icono">🐾</div>
+      <h3 class="modal-titulo">¡Todo suma!</h3>
+      <p class="modal-texto">Si querés ayudarnos, podés hacerlo con cualquier monto. ¡Gracias por sumar!</p>
+
+      <div class="modal-datos">
+        <div class="modal-dato">
+          <span class="modal-dato-label">Titular</span>
+          <span class="modal-dato-valor" data-don-titular>Colitas Chochas</span>
+        </div>
+        <div class="modal-dato">
+          <span class="modal-dato-label">Alias</span>
+          <span class="modal-dato-valor modal-dato-highlight" data-don-alias>colitaschochas</span>
+        </div>
+        <div class="modal-dato">
+          <span class="modal-dato-label">CVU</span>
+          <span class="modal-dato-valor" data-don-cvu>0000003100000001234567</span>
+        </div>
+        <div class="modal-dato">
+          <span class="modal-dato-label">CBU</span>
+          <span class="modal-dato-valor" data-don-cbu>0110006930000001234567</span>
+        </div>
+        <div class="modal-dato">
+          <span class="modal-dato-label">Banco</span>
+          <span class="modal-dato-valor" data-don-banco>Banco Galicia</span>
+        </div>
+        <div class="modal-dato">
+          <span class="modal-dato-label">Moneda</span>
+          <span class="modal-dato-valor" data-don-moneda>Pesos Argentinos (ARS)</span>
+        </div>
+      </div>
+
+      <div class="modal-mp" data-mercadopago style="display:none;">
+        <span class="modal-mp-icono">💙</span>
+        <span>También por <strong>Mercado Pago</strong>: <span data-don-mp></span></span>
+      </div>
+
+      <p class="modal-footer">Colitas Chochas – Refugio de animales</p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.hero-burger').addEventListener('click', function() {
+      const nav = document.querySelector('.hero-nav');
+      const expandido = nav.classList.toggle('abierto');
+      this.classList.toggle('abierto');
+      this.setAttribute('aria-expanded', expandido);
+    });
+    document.querySelectorAll('.hero-nav a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        document.querySelector('.hero-nav').classList.remove('abierto');
+        document.querySelector('.hero-burger').classList.remove('abierto');
+        document.querySelector('.hero-burger').setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* Modal colaborar */
+    (function() {
+      var modal = document.getElementById('modal-colaborar');
+      var btnAbrir = document.getElementById('btn-colaborar');
+      var btnCerrar = modal.querySelector('.modal-cerrar');
+
+      function abrirModal() {
+        modal.classList.add('activo');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        btnCerrar.focus();
+      }
+      function cerrarModal() {
+        modal.classList.remove('activo');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        btnAbrir.focus();
+      }
+
+      btnAbrir.addEventListener('click', abrirModal);
+      btnCerrar.addEventListener('click', cerrarModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) cerrarModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('activo')) cerrarModal();
+      });
+
+      /* Rellenar datos desde config */
+      import('js/config.js').then(function(m) {
+        var d = m.CONFIG.donaciones;
+        if (!d) return;
+        var set = function(sel, val) { var el = modal.querySelector(sel); if (el && val) el.textContent = val; };
+        set('[data-don-titular]', d.titular);
+        set('[data-don-alias]', d.alias);
+        set('[data-don-cvu]', d.cvu);
+        set('[data-don-cbu]', d.cbu);
+        set('[data-don-banco]', d.cbuBanco);
+        set('[data-don-moneda]', d.cbuMoneda);
+        if (d.mercadopago) {
+          modal.querySelector('[data-mercadopago]').style.display = '';
+          set('[data-don-mp]', d.mercadopago);
+        }
+      }).catch(function() {});
+    })();
+  </script>
   <script type="module" src="js/catalog.js"></script>
   <script type="module" src="js/aplicarTema.js"></script>
 </body>

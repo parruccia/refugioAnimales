@@ -65,9 +65,9 @@ async function renderizarContacto() {
 
     contenedorContacto.innerHTML = `
     <div class="contacto-dm">
-      <button type="button" class="btn-dm">📷 Copiar mensaje y abrir Instagram</button>
+      <p class="contacto-ayuda">Se abre el chat de Instagram del refugio, solo enviá:</p>
       <p class="mensaje-sugerido"></p>
-      <p class="contacto-ayuda">Se abre el chat de Instagram del refugio. Tu mensaje ya quedó copiado: solo pegá y enviá.</p>
+      <button type="button" class="btn-dm">📷 Copiar mensaje y abrir Instagram</button>
     </div>
   `;
 
@@ -90,10 +90,16 @@ async function renderizarContacto() {
 function renderizarAnimal(animal) {
     animalActual = animal;
 
+    document.title = `${animal.nombre} – Colitas Chochas`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = `${animal.nombre}, ${animal.especie} en adopción en Colitas Chochas. ${animal.descripcion || ''}`.slice(0, 160);
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage && animal.foto_url) ogImage.content = animal.foto_url;
+
     contenedor.innerHTML = `
     <div class="detalle-tarjeta">
       <div class="detalle-imagen">
-        <img src="${animal.foto_url || 'img/placeholder.png'}" alt="${animal.nombre}">
+        <img loading="lazy" src="${animal.foto_url || 'img/placeholder.png'}" alt="${animal.nombre}">
       </div>
       <div class="detalle-info">
         <span class="detalle-etiqueta">Disponible para adopción</span>
@@ -107,10 +113,28 @@ function renderizarAnimal(animal) {
         <div class="hero-separador" aria-hidden="true"></div>
         <p class="detalle-sub">Sobre ${animal.nombre}</p>
         <p class="descripcion">${animal.descripcion || ''}</p>
-        <div id="contacto"></div>
+
+        <div class="detalle-acciones">
+          <div id="contacto"></div>
+          <button type="button" class="btn-compartir" data-compartir>Compartir</button>
+        </div>
       </div>
     </div>
   `;
+
+    document.querySelector('[data-compartir]').addEventListener('click', () => {
+        const url = window.location.href;
+        const texto = `Conocé a ${animal.nombre}, un ${animal.especie} que busca hogar 🐾 ${url}`;
+        if (navigator.share) {
+            navigator.share({ title: `${animal.nombre} – Colitas Chochas`, text: texto, url });
+        } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(texto).then(() => {
+                const btn = document.querySelector('[data-compartir]');
+                btn.textContent = 'Copiado ✓';
+                setTimeout(() => { btn.textContent = 'Compartir'; }, 3000);
+            });
+        }
+    });
 }
 
 cargarAnimal();

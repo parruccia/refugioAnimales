@@ -4,9 +4,19 @@ export const CONFIG = {
   descripcionCorta: 'Encontrá a tu compañero',
 
   contacto: {
-    tipo: 'instagram', // 'instagram' o 'whatsapp'
+    tipo: 'instagram',
     instagramUser: 'refugiocolitaschochas',
-    whatsappNumero: '' // formato: 5493531234567 (sin +, sin espacios)
+    whatsappNumero: ''
+  },
+
+  donaciones: {
+    titular: 'Colitas Chochas',
+    alias: 'colitaschochas',
+    cvu: '0000003100000001234567',
+    cbu: '0110006930000001234567',
+    cbuBanco: 'Banco Galicia',
+    cbuMoneda: 'Pesos Argentinos (ARS)',
+    mercadopago: 'colitaschochas'
   },
 
   especies: ['perro', 'gato'], // especies que maneja este refugio

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar contraseña</title>
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-admin>
+
+  <div class="login-container">
+    <h1>Recuperar contraseña</h1>
+    <p class="login-texto">Ingresá tu email y te enviaremos un link para restablecer tu contraseña.</p>
+    <form id="form-recuperar">
+      <input type="email" id="email-recuperar" placeholder="Tu email" required>
+      <button type="submit">Enviar link de recuperación</button>
+      <p id="error-msg" class="error-msg"></p>
+      <p id="exito-msg" class="exito-msg"></p>
+    </form>
+    <a href="login.html" class="login-link">← Volver al login</a>
+  </div>
+
+  <script type="module">
+    import { supabase } from '../js/supabaseClient.js';
+
+    const form = document.getElementById('form-recuperar');
+    const error_msg = document.getElementById('error-msg');
+    const exito_msg = document.getElementById('exito-msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      error_msg.textContent = '';
+      exito_msg.textContent = '';
+
+      const email = document.getElementById('email-recuperar').value.trim();
+
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/admin/restablecer.html'
+      });
+
+      if (error) {
+        error_msg.textContent = 'Error: ' + error.message;
+        return;
+      }
+
+      exito_msg.textContent = 'Revisá tu casilla de correo. Te enviamos un link para restablecer tu contraseña.';
+      form.reset();
+    });
+  </script>
+</body>
+</html>

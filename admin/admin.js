@@ -53,6 +53,20 @@ if (cuerpoTabla) {
   }
 }
 
+// --- FORM (session guard) ---
+if (formAnimal) {
+  verificarSesion();
+}
+
+// --- AUTH STATE LISTENER (all admin pages) ---
+if (cuerpoTabla || formAnimal) {
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_OUT' || (!session)) {
+      window.location.href = 'login.html';
+    }
+  });
+}
+
 async function verificarSesion() {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) {
