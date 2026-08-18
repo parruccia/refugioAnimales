@@ -136,7 +136,8 @@ function renderizarTabla(animales) {
     fila.innerHTML = `
       <td><img src="${animal.foto_url || '../img/placeholder.png'}" class="foto-mini"></td>
       <td data-label="Nombre">${animal.nombre}</td>
-      <td><span class="admin-badges"><span class="celda-codigo" data-label="Código">${generarCodigo(animal)}</span><span class="badge-admin-especie" data-label="Especie">${animal.especie}</span></span></td>
+      <td data-label="Código" class="celda-codigo">${generarCodigo(animal)}</td>
+      <td data-label="Especie"><span class="badge-admin-especie">${animal.especie}</span></td>
       <td data-label="Estado">
         <select class="select-estado" data-id="${animal.id}">
           <option value="disponible" ${animal.estado === 'disponible' ? 'selected' : ''}>Disponible</option>
