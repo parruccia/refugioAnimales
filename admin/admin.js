@@ -136,15 +136,14 @@ function renderizarTabla(animales) {
     fila.innerHTML = `
       <td><img src="${animal.foto_url || '../img/placeholder.png'}" class="foto-mini"></td>
       <td data-label="Nombre">${animal.nombre}</td>
-      <td data-label="Código" class="celda-codigo">${generarCodigo(animal)}</td>
-      <td data-label="Especie">${animal.especie}</td>
+      <td><span class="admin-badges"><span class="celda-codigo" data-label="Código">${generarCodigo(animal)}</span><span class="badge-admin-especie" data-label="Especie">${animal.especie}</span></span></td>
       <td data-label="Estado">
         <select class="select-estado" data-id="${animal.id}">
           <option value="disponible" ${animal.estado === 'disponible' ? 'selected' : ''}>Disponible</option>
           <option value="adoptado" ${animal.estado === 'adoptado' ? 'selected' : ''}>Adoptado</option>
         </select>
       </td>
-      <td>
+      <td data-label="Acciones">
         <a href="form.html?id=${animal.id}">Editar</a>
         <button class="btn-eliminar" data-id="${animal.id}">Eliminar</button>
       </td>
